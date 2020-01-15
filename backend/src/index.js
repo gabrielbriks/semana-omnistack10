@@ -5,7 +5,7 @@ const app = express();
 mongoose.connect('mongodb+srv://master:@master@cluster0-itqet.mongodb.net/week10?retryWrites=true&w=majority',{
   useNewUrlParser: true,
   useUnifiedTopology: true,
-})
+});
 /**
  *  Apartir desse momento meio que cadastramos o json dentro do express, para entender requisições 
  * que possuem o corpo no formato JSON 

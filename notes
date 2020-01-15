@@ -52,3 +52,8 @@ ARQUITETURA DA APLICAÇÃO
         * Cadastre e crie o Cluster
         * Um cluster é um servidor, e dentro dele podemos ter varias bases de dados
         * Para usarmos em nossa aplicação iremos primeiramente instalar o 'mongoose', comand > 'yarn add mongoose'
+
+    Após passar os aquivos para a pasta src e adicionar o as rotas,
+    criar nossa primeira models..
+
+    Instale o axios para começar as requisições de verdade e importe ele la dentro da 'routes.js'

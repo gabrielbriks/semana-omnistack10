@@ -1,0 +1,27 @@
+ARQUITETURA DA APLICAÇÃO
+
+#BACK-END
+  -Regra de negócio
+  -Conexão banco de dados
+  -Envio de Email
+  -Comunicação com Webservice(serviçoes que podem pretar algum tipo de informação para a nossa aplicação)
+  -Autenticação do usuário
+  -Criptografia e segurança
+
+  Dentro da semana estaremos construindo uma API RestFull, que no caso é quando criamos uma aplicação que
+  nao possui front-ent, o RestFull são regras que a API irá seguir.
+
+  Sendo assim, para a nossa aplicação realizar a comunicação de forma padronizada com os serviços como o Front-end Web,
+  o Front-end Mobile e qualquer outro serviço externo, estaremos utilizando para a traferencia de dados utilizaremos 
+  o 'JSON'. 
+
+  #1
+    -Criar pasta backend, e realizar o 'yarn init -y'; 
+    -Em seguida instalar o 'express'
+    -Definir a rota home
+    -Instalar o nodemon, comand > 'yarn add -D nodemon'
+    
+    -Instalar o insomnia para conseguirmos testar as rotas que formos implementando 'insomnia.rest'
+    -Após a instalação do insomnia, definiremos a nossa primeira request, no caso estamos criando
+      uma rota para testarmos  
+      

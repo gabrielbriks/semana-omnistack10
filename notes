@@ -24,4 +24,31 @@ ARQUITETURA DA APLICAÇÃO
     -Instalar o insomnia para conseguirmos testar as rotas que formos implementando 'insomnia.rest'
     -Após a instalação do insomnia, definiremos a nossa primeira request, no caso estamos criando
       uma rota para testarmos  
-      
+    
+    -Tipos de parametros dentro do express:
+      -Temos 3 tipos de parametros são eles:
+        -Query Params: 
+          *São usados na maioria das vezes no método GET, pois o metodo get não aceita corpo. 
+          *Todos os Qeury Params ficam visiveis na url por exemplo "http://localhost:3333/?search=Diego"
+          *Utilizamos/acessamos ele com a seguinte sintax: 'req.query' ; 
+          *São usados como "Filtros, Ordenação, Paginação e etc", são esses tipos que não tem tanto haver com criação
+
+        -Route Params:
+          * São usados exclusivamente nos métodos PUT e DELETE;
+          * Exemplo de uma Route Params "http://localhost:3333/users/1", eles não posssuem nome;
+          * Para acessarmos esse params utilizamos o 'res.params';
+          * São usados para identificar um recurso na alteração ou remoção 
+
+        -Body(É corpo da requisição):
+          * São usado para criação ou alteração de um registro
+          * Acessamos esse params utilizamos o 'res.body'
+          * 
+      OBS: Para utilizamos o JSON no corpo de nossas requisições, será necessário dizer para o express que iremos usar,
+      para dizermos para ele basta fazer o seguinte:
+        * app.use(express.json)
+
+     -MONGODB
+        * Um banco não relacional 
+        * Cadastre e crie o Cluster
+        * Um cluster é um servidor, e dentro dele podemos ter varias bases de dados
+        * Para usarmos em nossa aplicação iremos primeiramente instalar o 'mongoose', comand > 'yarn add mongoose'

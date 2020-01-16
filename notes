@@ -57,3 +57,31 @@ ARQUITETURA DA APLICAÇÃO
     criar nossa primeira models..
 
     Instale o axios para começar as requisições de verdade e importe ele la dentro da 'routes.js'
+
+  - Geolocalização
+      para incialmente conseguirmo cadastrar a localização do dev, estaremos criando dentro de models
+      uma pasta chamada utils, dentro dela iremos guarda a configuração da Geolocalização por ela ser 
+      grande e também conseguirmos usar em outros lugares dentro da aplicação.
+
+      Obs: Essa configuração que ele nos ensina a fazer consta dentro da documentação do mongodb.
+
+      Agora basta realizar o teste com o insomnia adicionando a longitude e latitude..
+      Como e onde pordemos/iremos buscar essa longitude e latitude? Se acessarmos o googleMaps,
+      e aguardar alguns segundos que la em cima na url irá aparecer alguns numeros, o primeiro numero
+      significa a Latitude e o segundo numero a Longitude.
+      Exemplo
+      @-15.8337327,-47.9119285,15z
+        Latitude      Longitude
+
+
+      # Nesse momento a nossa requisição no insomnia está da seguinte forma: 
+      JSON
+      {
+        "github_username": "gabrielbriks",
+        "techs": "ReactJS, NodeJS, JS",
+        "latitude": "-15.8337327",
+        "longitude": "-47.9119285"
+      }
+
+
+      

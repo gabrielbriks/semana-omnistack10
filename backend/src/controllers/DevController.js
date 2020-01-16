@@ -1,7 +1,23 @@
 const axios = require('axios');
 const Dev = require('../models/Dev');
 
+//Um controller possui 5 funções index, show, store, update, detroy
+/**
+ * Index: para quando queremos mostrar uma lista de dev por exemplo; 
+ * Show: para quando queremos mostrar um unico dev por exemplo;
+ * Store: para quando queremos criar um novo cadastro;
+ * Update: para quando queremos alterar;
+ * Destroy: para quando queremos deletar;  
+ */
 module.exports = {
+    //Buscando uma lista de devs
+    async index(request, response){
+        const devs = await Dev.find();
+        
+        return response.json(devs);
+    },
+
+
     //Gravando uma informação no banco 
     async store(request, response) {
         const { github_username, techs, latitude, longitude } = request.body;

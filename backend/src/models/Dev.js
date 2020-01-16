@@ -9,7 +9,7 @@ avatar_url: String,
 techs: [String], // o vetor diz que armazena uma ou mais strings de tecnologia
 location: { 
     type: PointSchema,
-    index: '2dsphere'
+    createIndexes: '2dsphere'
  },
 });
 

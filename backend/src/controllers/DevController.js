@@ -1,6 +1,6 @@
 const axios = require('axios');
 const Dev = require('../models/Dev');
-
+const parseStringAsArray = require('../utils/parseStringAsArray');
 //Um controller possui 5 funções index, show, store, update, detroy
 /**
  * Index: para quando queremos mostrar uma lista de dev por exemplo; 
@@ -33,7 +33,7 @@ module.exports = {
     
         // console.log(name, avatar_url, bio);
     
-        const techsArray = techs.split(',').map(tech => tech.trim());//trim remove espaços no inicio e no fim 
+        const techsArray = parseStringAsArray(techs);
         
         // criando esse location para armazenar a latitude e a longitude 
         const location = {
@@ -55,4 +55,8 @@ module.exports = {
     }
         return response.json(dev);
       }
+
+    //Criar >> async Update;
+
+    //Criar >> async Destroy
 };

@@ -129,7 +129,9 @@ Entendendo o React
 
   #Criando Front Web
     -Primeiro iremos criar uma nova pasta com o seguinte comand > 'yarn create react-app web', qua o nome dela vai ser "web"
-    
+
+    OBS: Todo o html é gerando pelo javascript.
+       
 
  
 

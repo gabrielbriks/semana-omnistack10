@@ -127,7 +127,9 @@ Entendendo o React
 
   Utilizando JSON para fornecer os dados para a gente podemos utilizar diversos FrontEnd
 
-  
+  #Criando Front Web
+    -Primeiro iremos criar uma nova pasta com o seguinte comand > 'yarn create react-app web', qua o nome dela vai ser "web"
+    
 
  
 

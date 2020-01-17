@@ -84,4 +84,55 @@ ARQUITETURA DA APLICAÇÃO
       }
 
 
+#FrontEnd
+Entendendo o React
+
+  -Abordagem Tradicional
+    - Abordagem que usamos por muito tempo e muitos apps ainda utilizamos
+      * O browser faz uma requisicao para o backend(que pode ser em Node,php e etc),
+      pedindo alguma informação e na maioria das vezes essa informação é uma pagina
+      ou conteudo.
+      Ex: Me dê a listagem de usuarios, ou seja estou acessando uma pagina de listagem
+      de usuários e eu quero que o backend me retorne essa informações.
+        Apos o backend ver essa requisição de uma lista de usuarios, ele vai la no banco 
+        de dados pega uma listagem usuarios(que pode ser filtrada, pagina e etc), ele monta
+        um HTML com essas listagens de usuarios..E nesse caso temos um conceito dentro do backend
+        que geralmente utilizamos que é algo chamado de 'Template end'(no Node podemo utilizar o 'render'),
+        ai utilizamos essa abordagem para montar uma resposta contendo HTML, CSS e tbm JS..
+
+         Nisso podemos ver que as reponsabilidade do backend nesse caso é:
+            - Lidar com a regra de negocio
+            - Lidar com acesso ao BD
+            - Lidar com a parte de apresentação(que seria o html,css etc)
+
+      Dentro disso podemos observar que nao podemos ter uma abordagem com varios
+      frontend diferentes por exemplo um app Mobile, um Admin(que pode consumir essa API para cadastrar informações)
+      Web(para o cliente ver essas informações).
+      Por que como o backend so vai estar respondendo HTML, algo mais estrutural da pagina, podemos pensar,
+      como o app mobile vai ler esse HTML e mostrar em tela?
+            É TOTALMENTE COMPLEXO E TRABALHOSO FAZER ISSO COM ESSA ABORDAGEM.
+
+  
+-Abordagem SPA(Single-page Aplications ou seja aplicações em uma unica pagina)
+  Como assim?
+
+  O que acontece em uma single-page?
+    Toda a parte html, css e js ficam na parte do browser ou seja é carregado a parte do servidor,
+    sendo assim quando o React faz uma requisição o nosso backend retorna apenas um JSON(resposta em uma estrutura de dados),
+    e o frontend trabalha todas essas informações na tela. O proprio React que ira gerar o html.
+    Poderia utilizar o js puro para isso ? Sim, mas seria mega trabalhoso, por isso estamos usando React ate por que ele e muito otimizado.
+    
+  Nessa abordagem o backend não tem responsabilidade nenhuma com a parte de apresentação.
+  Um bom resultado disso é que a pagina nunca recarrega, trazendo uma boa performace :).. e colocando em pratica o conceito de SPA.
+
+  Utilizando JSON para fornecer os dados para a gente podemos utilizar diversos FrontEnd
+
+  
+
+ 
+
+
+
+
+
       

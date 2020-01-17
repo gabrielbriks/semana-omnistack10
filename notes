@@ -131,8 +131,10 @@ Entendendo o React
     -Primeiro iremos criar uma nova pasta com o seguinte comand > 'yarn create react-app web', qua o nome dela vai ser "web"
 
     OBS: Todo o html é gerando pelo javascript.
-       
 
+  !Regra que o React impoem:
+    *Que so podemos criar um componente por arquivo.
+    
  
 
 

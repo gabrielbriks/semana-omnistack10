@@ -20,7 +20,7 @@ import React from 'react';
       Propiedade nada mais é do que Informações um componente PAI passa para um componente FILHO
   3#Estado
     * é basicamenteuma informação que um componente vai manipular
-    
+    *
   
   
 */
@@ -30,9 +30,10 @@ import Header from './Header';
   é uma função que retorna um conteudo html;
   o conteudo html e o que chamamos de JSX
 */
-function App() {
+function App() {//Componente PAI
   return (
-    <>
+    <> 
+    {/* Componentes Filhos; Sao os renderizados */}
     <Header title="Dashboard"/>
     <Header title="Titulo 2"/>
     <Header title="Titulo 3"/>

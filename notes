@@ -139,10 +139,16 @@ Entendendo o React
     - Entao és a pergunta, onde criamos a função que irá disparar esse evento?
       *Criamos ela dentro do proprio componente.
     
- 
+  - Utilizando a função de geolocalização do navegador para 
+    * para conseguir pegar a localização do usuario estaremo utilizando uma propiedade,
+    que esta disponivel e se chama 'navigator'.
+    
+    * useEffect : 
+      realizamos o import no react,
+      * Ele serve para dispararmos uma função toda vez que uma informação for alterada,
+      ou também apenas uma unica vez.
 
-
-
-
+      OBS React: Dentro do react utilizamos uma abordagem de programação imperativa,
+      em vez de programação descritiva.
 
       

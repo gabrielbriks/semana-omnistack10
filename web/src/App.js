@@ -38,18 +38,16 @@ import React, { useState } from 'react';
   o conteudo html e o que chamamos de JSX
 */
 function App() {//Componente PAI
-const [counter, setCounter] = useState(0);
 
-  //Criando a funcao incrementar contador, que ira ser disparado a cada click do nosso botao
-  function incrementCounter(){
-    setCounter(counter +1);
-  }
   return (
-    <> 
-      <h1>Contador: {counter}</h1>
-      <button onClick={incrementCounter}>Incrementar</button>
-    </>
-  // <h1>Hello World</h1>
+   <div id="app">
+     <aside>
+
+     </aside>
+     <main>
+       
+     </main>
+   </div>
   );
 }
 

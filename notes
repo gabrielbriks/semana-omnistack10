@@ -132,8 +132,12 @@ Entendendo o React
 
     OBS: Todo o html é gerando pelo javascript.
 
-  !Regra que o React impoem:
-    *Que so podemos criar um componente por arquivo.
+  !Regra que o React importante:
+    *Só podemos criar um componente por arquivo.
+
+  -Entendendo como que fazemos um botao disparar um evento
+    - Entao és a pergunta, onde criamos a função que irá disparar esse evento?
+      *Criamos ela dentro do proprio componente.
     
  
 

@@ -135,8 +135,13 @@ Entendendo o React
   !Regra que o React impoem:
     *Que so podemos criar um componente por arquivo.
     
- 
-
+ #CORS
+   Estamos instalando o cors para utilizamos em noss backend, o intuito e deixar o nosso backend
+   acessivel para o nosso frontend..
+   Pois o Node possui um comportamento default de evitar acessos externos a nossa API, ele 
+   so permite acessos atraves do mesmo endereço.
+   O exemplo mais claro disso é a nossa propria aplicação. O nosso Front roda na porta 3000 e 
+   o nosso back roda na porta 3333.
 
 
 

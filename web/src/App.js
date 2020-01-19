@@ -6,6 +6,9 @@ import './App.css';
 import './Sidebar.css';
 import './Main.css'
 
+import DeForm from './Components/DevForm';
+import DevItem from './Components/DevItem';
+
 /* Anotações Gerais
   # UseEfect()
     Ele serve para dispararmos uma função toda vez que uma informação for alterada,
@@ -62,146 +65,38 @@ import './Main.css'
 function App() {//Componente PAI
   //create state for list the devs
   const [devs, setDevs] = useState([]);
-
-  //criando estado para ser setado os valores da geoLocation em nosso inputs de Localização  
-  const [ github_username, setGitHubUsername ] = useState('');
-  const [ techs, setTechs ] = useState('');  
-  const [ latitude, setLatitude ] = useState('');
-  const [ longitude, setLongitude ] = useState('');
-  
-  // Busca localização do user
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        //funcao de sucesso, retorna a position  do user
-        //  console.log(position.coords);
-        const { latitude, longitude} = position.coords;
-        
-        // console.log(latitude);
-
-        setLatitude(latitude);
-        setLongitude(longitude);
-      },
-      (err) => {
-        console.log(err);
-      },
-      {
-        timeout:30000,
-      }
-    )
-  }, []);
   
   //Busca lista de usuarios
   useEffect(() => {
     async function loadDevs(){
-      const response = await api.get('/devs');
-     
+      const response = await api.get('/devs');     
       setDevs(response.data);
     }
     loadDevs();
-
   }, []);
 
   //Funcao que ira disparar evento salvar ao clicar no submit
-  async function handleAddDev(e){
-    //Como ele possui um comportamento padrao de levar para outra tela utilizamos o preventDefault
-    e.preventDefault();
-    
+  async function handleAddDev(data){   
     //POST - Cadastrar Dev
-    const response = await api.post('/devs',{
-      github_username,
-      techs,
-      latitude,
-      longitude
-    });
-    // console.log(response.data);
-
-    //Limpando os campos da tela de cadastro
-    setGitHubUsername('');
-    setTechs('');
-
+    const response = await api.post('/devs', data);
     //inserir o ultimo dev cadastrado na listagem de apresentação
     setDevs([...devs, response.data]);
-
-
   }
 
   return (
    <div id="app">
      <aside>
       <strong>Cadastrar</strong>
-      <form onSubmit={handleAddDev}>
-        <div className="input-block">
-          <label htmlFor="github_username">Usuário do GirHub</label>
-          <input 
-          name="github_username" 
-          id="github_username" 
-          required 
-          value = {github_username}
-          onChange = { e => setGitHubUsername(e.target.value)}
-          />
-        </div>
-
-        <div className="input-block">
-          <label htmlFor="techs">Tecnologias</label>
-          <input
-            name="techs" 
-            id="techs" 
-            required 
-            value = {techs}
-            onChange={e => setTechs(e.target.value)}
-          />
-        </div>
-
-        <div className="input-group">
-          <div className="input-block">
-            <label htmlFor="latitude">Latitude</label>
-            <input 
-              type="number"
-              name="latitude" 
-              id="latitude" 
-              required 
-              value={latitude}
-              onChange={e => setLatitude(e.target.value)}
-            />
-          </div>
-
-          <div className="input-block">
-            <label htmlFor="longitude">Longitude</label>
-            <input 
-              type="number"
-              name="longitude"
-              id="longitude"
-              required 
-              value={longitude}
-              onChange={e => setLongitude(e.target.value)}
-            />
-          </div>
-        </div>
-
-        <button type="submit">Salvar</button>
-      </form>
+      <DeForm onSubmit={handleAddDev} />
      </aside>
 
      <main>
-      
       <ul>
         {/* Percorrendo o meu vetor devs, e ira retornor um conteudo JSX(HTML) */}
-        {devs.map(dev => {
-          return (
-            <li key={dev._id} className="dev-item">
-            <header>
-              <img src={dev.avatar_url} alt={dev.name} />
-              <div className="user-info">
-              <strong>{ dev.name }</strong>
-              <span>{dev.techs.join(', ')}</span> {/*Como ele e um array, estou usando o join para separar cada item por virgula e espaço*/}
-              </div>
-            </header>
-            <p>{dev.bio}</p>
-            <a href={`http://github.com/${dev.github_username}`}>Acessar perfil GitHub</a>
-          </li>
-          );
-        })}       
+        {devs.map(dev => (
+            <DevItem key={dev._id} dev={dev} />
+          )
+        )}       
       </ul>
     
      </main>

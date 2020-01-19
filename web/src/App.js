@@ -60,11 +60,12 @@ import './Main.css'
     o conteudo html e o que chamamos de JSX
   */
 function App() {//Componente PAI
-  
-  //criandao estado para ser setado os valores da geoLocation em nosso inputs de Localização
+  //create state for list the devs
+  const [devs, setDevs] = useState([]);
+
+  //criando estado para ser setado os valores da geoLocation em nosso inputs de Localização  
   const [ github_username, setGitHubUsername ] = useState('');
-  const [ techs, setTechs ] = useState('');
-  
+  const [ techs, setTechs ] = useState('');  
   const [ latitude, setLatitude ] = useState('');
   const [ longitude, setLongitude ] = useState('');
   
@@ -88,8 +89,19 @@ function App() {//Componente PAI
         timeout:30000,
       }
     )
-  }, [latitude, longitude, setLatitude, setLongitude]);
-    
+  }, []);
+  
+  //Busca lista de usuarios
+  useEffect(() => {
+    async function loadDevs(){
+      const response = await api.get('/devs');
+     
+      setDevs(response.data);
+    }
+    loadDevs();
+
+  }, []);
+
   //Funcao que ira disparar evento salvar ao clicar no submit
   async function handleAddDev(e){
     //Como ele possui um comportamento padrao de levar para outra tela utilizamos o preventDefault
@@ -102,7 +114,16 @@ function App() {//Componente PAI
       latitude,
       longitude
     });
-    console.log(response.data);
+    // console.log(response.data);
+
+    //Limpando os campos da tela de cadastro
+    setGitHubUsername('');
+    setTechs('');
+
+    //inserir o ultimo dev cadastrado na listagem de apresentação
+    setDevs([...devs, response.data]);
+
+
   }
 
   return (
@@ -165,55 +186,24 @@ function App() {//Componente PAI
      <main>
       
       <ul>
-        <li className="dev-item">
-          <header>
-            <img src="https://avatars3.githubusercontent.com/u/37519878?s=400&u=92a1bf6f06e6729873b86fd21af8c6c29f71c979&v=4" alt="Avatar"/>
-            <div className="user-info">
-              <strong>Gabriel Briks</strong>
-              <span>JavaScript, C#, ReactJS</span>
-            </div>
-          </header>
-          <p>Desenvolvedor C# e Javascript em grande construção...</p>
-          <a href="http://github.com/gabrielbriks">Acessar perfil GitHub</a>
-        </li>
-
-        <li className="dev-item">
-          <header>
-            <img src="https://avatars3.githubusercontent.com/u/37519878?s=400&u=92a1bf6f06e6729873b86fd21af8c6c29f71c979&v=4" alt="Avatar"/>
-            <div className="user-info">
-              <strong>Gabriel Briks</strong>
-              <span>JavaScript, C#, ReactJS</span>
-            </div>
-          </header>
-          <p>Desenvolvedor C# e Javascript em grande construção...</p>
-          <a href="http://github.com/gabrielbriks">Acessar perfil GitHub</a>
-        </li>
-
-        <li className="dev-item">
-          <header>
-            <img src="https://avatars3.githubusercontent.com/u/37519878?s=400&u=92a1bf6f06e6729873b86fd21af8c6c29f71c979&v=4" alt="Avatar"/>
-            <div className="user-info">
-              <strong>Gabriel Briks</strong>
-              <span>JavaScript, C#, ReactJS</span>
-            </div>
-          </header>
-          <p>Desenvolvedor C# e Javascript em grande construção...</p>
-          <a href="http://github.com/gabrielbriks">Acessar perfil GitHub</a>
-        </li>
-
-        <li className="dev-item">
-          <header>
-            <img src="https://avatars3.githubusercontent.com/u/37519878?s=400&u=92a1bf6f06e6729873b86fd21af8c6c29f71c979&v=4" alt="Avatar"/>
-            <div className="user-info">
-              <strong>Gabriel Briks</strong>
-              <span>JavaScript, C#, ReactJS</span>
-            </div>
-          </header>
-          <p>Desenvolvedor C# e Javascript em grande construção...</p>
-          <a href="http://github.com/gabrielbriks">Acessar perfil GitHub</a>
-        </li>
+        {/* Percorrendo o meu vetor devs, e ira retornor um conteudo JSX(HTML) */}
+        {devs.map(dev => {
+          return (
+            <li key={dev._id} className="dev-item">
+            <header>
+              <img src={dev.avatar_url} alt={dev.name} />
+              <div className="user-info">
+              <strong>{ dev.name }</strong>
+              <span>{dev.techs.join(', ')}</span> {/*Como ele e um array, estou usando o join para separar cada item por virgula e espaço*/}
+              </div>
+            </header>
+            <p>{dev.bio}</p>
+            <a href={`http://github.com/${dev.github_username}`}>Acessar perfil GitHub</a>
+          </li>
+          );
+        })}       
       </ul>
-
+    
      </main>
    </div>
   );

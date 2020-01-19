@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import api from './services/api';
 
 import './global.css';
 import './App.css';
@@ -67,15 +68,15 @@ function App() {//Componente PAI
   const [ latitude, setLatitude ] = useState('');
   const [ longitude, setLongitude ] = useState('');
   
-
+  // Busca localização do user
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         //funcao de sucesso, retorna a position  do user
-         console.log(position.coords);
+        //  console.log(position.coords);
         const { latitude, longitude} = position.coords;
         
-        console.log(latitude);
+        // console.log(latitude);
 
         setLatitude(latitude);
         setLongitude(longitude);
@@ -89,19 +90,26 @@ function App() {//Componente PAI
     )
   }, [latitude, longitude, setLatitude, setLongitude]);
     
-  //Funcao que ira disparar ao clicar no submit
+  //Funcao que ira disparar evento salvar ao clicar no submit
   async function handleAddDev(e){
     //Como ele possui um comportamento padrao de levar para outra tela utilizamos o preventDefault
     e.preventDefault();
     
-
+    //POST - Cadastrar Dev
+    const response = await api.post('/devs',{
+      github_username,
+      techs,
+      latitude,
+      longitude
+    });
+    console.log(response.data);
   }
 
   return (
    <div id="app">
      <aside>
       <strong>Cadastrar</strong>
-      <form>
+      <form onSubmit={handleAddDev}>
         <div className="input-block">
           <label htmlFor="github_username">Usuário do GirHub</label>
           <input 

@@ -132,18 +132,36 @@ Entendendo o React
 
     OBS: Todo o html é gerando pelo javascript.
 
-  !Regra que o React impoem:
-    *Que so podemos criar um componente por arquivo.
+
+  !Regra que o React importante:
+    *Só podemos criar um componente por arquivo.
+
+  -Entendendo como que fazemos um botao disparar um evento
+    - Entao és a pergunta, onde criamos a função que irá disparar esse evento?
+      *Criamos ela dentro do proprio componente.
     
- #CORS
-   Estamos instalando o cors para utilizamos em noss backend, o intuito e deixar o nosso backend
-   acessivel para o nosso frontend..
-   Pois o Node possui um comportamento default de evitar acessos externos a nossa API, ele 
-   so permite acessos atraves do mesmo endereço.
-   O exemplo mais claro disso é a nossa propria aplicação. O nosso Front roda na porta 3000 e 
-   o nosso back roda na porta 3333.
+  - Utilizando a função de geolocalização do navegador para 
+    * para conseguir pegar a localização do usuario estaremo utilizando uma propiedade,
+    que esta disponivel e se chama 'navigator'.
+    
+    * useEffect : 
+      realizamos o import no react,
+      * Ele serve para dispararmos uma função toda vez que uma informação for alterada,
+      ou também apenas uma unica vez.
 
-  Comand > 'yarn add cors'
 
+ 
+
+    #CORS
+       Estamos instalando o cors para utilizamos em noss backend, o intuito e deixar o nosso backend
+       acessivel para o nosso frontend..
+       Pois o Node possui um comportamento default de evitar acessos externos a nossa API, ele 
+       so permite acessos atraves do mesmo endereço.
+       O exemplo mais claro disso é a nossa propria aplicação. O nosso Front roda na porta 3000 e 
+       o nosso back roda na porta 3333.
+
+      Comand > 'yarn add cors'
+          OBS React: Dentro do react utilizamos uma abordagem de programação imperativa,
+          em vez de programação descritiva.
 
       

@@ -143,7 +143,7 @@ Entendendo o React
    O exemplo mais claro disso é a nossa propria aplicação. O nosso Front roda na porta 3000 e 
    o nosso back roda na porta 3333.
 
-
+  Comand > 'yarn add cors'
 
 
       

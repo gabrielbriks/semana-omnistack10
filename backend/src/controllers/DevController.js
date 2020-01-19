@@ -50,7 +50,7 @@ module.exports = {
           location,
         });
     
-        console.log(techsArray);
+        // console.log(techsArray);
     
     }
         return response.json(dev);

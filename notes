@@ -132,6 +132,7 @@ Entendendo o React
 
     OBS: Todo o html é gerando pelo javascript.
 
+
   !Regra que o React importante:
     *Só podemos criar um componente por arquivo.
 
@@ -148,7 +149,19 @@ Entendendo o React
       * Ele serve para dispararmos uma função toda vez que uma informação for alterada,
       ou também apenas uma unica vez.
 
-      OBS React: Dentro do react utilizamos uma abordagem de programação imperativa,
-      em vez de programação descritiva.
+
+ 
+
+    #CORS
+       Estamos instalando o cors para utilizamos em noss backend, o intuito e deixar o nosso backend
+       acessivel para o nosso frontend..
+       Pois o Node possui um comportamento default de evitar acessos externos a nossa API, ele 
+       so permite acessos atraves do mesmo endereço.
+       O exemplo mais claro disso é a nossa propria aplicação. O nosso Front roda na porta 3000 e 
+       o nosso back roda na porta 3333.
+
+      Comand > 'yarn add cors'
+          OBS React: Dentro do react utilizamos uma abordagem de programação imperativa,
+          em vez de programação descritiva.
 
       

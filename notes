@@ -1,0 +1,218 @@
+ARQUITETURA DA APLICAÇÃO
+
+#BACK-END
+  -Regra de negócio
+  -Conexão banco de dados
+  -Envio de Email
+  -Comunicação com Webservice(serviçoes que podem pretar algum tipo de informação para a nossa aplicação)
+  -Autenticação do usuário
+  -Criptografia e segurança
+
+  Dentro da semana estaremos construindo uma API RestFull, que no caso é quando criamos uma aplicação que
+  nao possui front-ent, o RestFull são regras que a API irá seguir.
+
+  Sendo assim, para a nossa aplicação realizar a comunicação de forma padronizada com os serviços como o Front-end Web,
+  o Front-end Mobile e qualquer outro serviço externo, estaremos utilizando para a traferencia de dados utilizaremos 
+  o 'JSON'. 
+
+  #1
+    -Criar pasta backend, e realizar o 'yarn init -y'; 
+    -Em seguida instalar o 'express'
+    -Definir a rota home
+    -Instalar o nodemon, comand > 'yarn add -D nodemon'
+    
+    -Instalar o insomnia para conseguirmos testar as rotas que formos implementando 'insomnia.rest'
+    -Após a instalação do insomnia, definiremos a nossa primeira request, no caso estamos criando
+      uma rota para testarmos  
+    
+    -Tipos de parametros dentro do express:
+      -Temos 3 tipos de parametros são eles:
+        -Query Params: 
+          *São usados na maioria das vezes no método GET, pois o metodo get não aceita corpo. 
+          *Todos os Qeury Params ficam visiveis na url por exemplo "http://localhost:3333/?search=Diego"
+          *Utilizamos/acessamos ele com a seguinte sintax: 'req.query' ; 
+          *São usados como "Filtros, Ordenação, Paginação e etc", são esses tipos que não tem tanto haver com criação
+
+        -Route Params:
+          * São usados exclusivamente nos métodos PUT e DELETE;
+          * Exemplo de uma Route Params "http://localhost:3333/users/1", eles não posssuem nome;
+          * Para acessarmos esse params utilizamos o 'res.params';
+          * São usados para identificar um recurso na alteração ou remoção 
+
+        -Body(É corpo da requisição):
+          * São usado para criação ou alteração de um registro
+          * Acessamos esse params utilizamos o 'res.body'
+          * 
+      OBS: Para utilizamos o JSON no corpo de nossas requisições, será necessário dizer para o express que iremos usar,
+      para dizermos para ele basta fazer o seguinte:
+        * app.use(express.json)
+
+     -MONGODB
+        * Um banco não relacional 
+        * Cadastre e crie o Cluster
+        * Um cluster é um servidor, e dentro dele podemos ter varias bases de dados
+        * Para usarmos em nossa aplicação iremos primeiramente instalar o 'mongoose', comand > 'yarn add mongoose'
+
+    Após passar os aquivos para a pasta src e adicionar o as rotas,
+    criar nossa primeira models..
+
+    Instale o axios para começar as requisições de verdade e importe ele la dentro da 'routes.js'
+
+  - Geolocalização
+      para incialmente conseguirmo cadastrar a localização do dev, estaremos criando dentro de models
+      uma pasta chamada utils, dentro dela iremos guarda a configuração da Geolocalização por ela ser 
+      grande e também conseguirmos usar em outros lugares dentro da aplicação.
+
+      Obs: Essa configuração que ele nos ensina a fazer consta dentro da documentação do mongodb.
+
+      Agora basta realizar o teste com o insomnia adicionando a longitude e latitude..
+      Como e onde pordemos/iremos buscar essa longitude e latitude? Se acessarmos o googleMaps,
+      e aguardar alguns segundos que la em cima na url irá aparecer alguns numeros, o primeiro numero
+      significa a Latitude e o segundo numero a Longitude.
+      Exemplo
+      @-15.8337327,-47.9119285,15z
+        Latitude      Longitude
+
+
+      # Nesse momento a nossa requisição no insomnia está da seguinte forma: 
+      JSON
+      {
+        "github_username": "gabrielbriks",
+        "techs": "ReactJS, NodeJS, JS",
+        "latitude": "-15.8337327",
+        "longitude": "-47.9119285"
+      }
+
+
+#FrontEnd
+Entendendo o React
+
+  -Abordagem Tradicional
+    - Abordagem que usamos por muito tempo e muitos apps ainda utilizamos
+      * O browser faz uma requisicao para o backend(que pode ser em Node,php e etc),
+      pedindo alguma informação e na maioria das vezes essa informação é uma pagina
+      ou conteudo.
+      Ex: Me dê a listagem de usuarios, ou seja estou acessando uma pagina de listagem
+      de usuários e eu quero que o backend me retorne essa informações.
+        Apos o backend ver essa requisição de uma lista de usuarios, ele vai la no banco 
+        de dados pega uma listagem usuarios(que pode ser filtrada, pagina e etc), ele monta
+        um HTML com essas listagens de usuarios..E nesse caso temos um conceito dentro do backend
+        que geralmente utilizamos que é algo chamado de 'Template end'(no Node podemo utilizar o 'render'),
+        ai utilizamos essa abordagem para montar uma resposta contendo HTML, CSS e tbm JS..
+
+         Nisso podemos ver que as reponsabilidade do backend nesse caso é:
+            - Lidar com a regra de negocio
+            - Lidar com acesso ao BD
+            - Lidar com a parte de apresentação(que seria o html,css etc)
+
+      Dentro disso podemos observar que nao podemos ter uma abordagem com varios
+      frontend diferentes por exemplo um app Mobile, um Admin(que pode consumir essa API para cadastrar informações)
+      Web(para o cliente ver essas informações).
+      Por que como o backend so vai estar respondendo HTML, algo mais estrutural da pagina, podemos pensar,
+      como o app mobile vai ler esse HTML e mostrar em tela?
+            É TOTALMENTE COMPLEXO E TRABALHOSO FAZER ISSO COM ESSA ABORDAGEM.
+
+  
+-Abordagem SPA(Single-page Aplications ou seja aplicações em uma unica pagina)
+  Como assim?
+
+  O que acontece em uma single-page?
+    Toda a parte html, css e js ficam na parte do browser ou seja é carregado a parte do servidor,
+    sendo assim quando o React faz uma requisição o nosso backend retorna apenas um JSON(resposta em uma estrutura de dados),
+    e o frontend trabalha todas essas informações na tela. O proprio React que ira gerar o html.
+    Poderia utilizar o js puro para isso ? Sim, mas seria mega trabalhoso, por isso estamos usando React ate por que ele e muito otimizado.
+    
+  Nessa abordagem o backend não tem responsabilidade nenhuma com a parte de apresentação.
+  Um bom resultado disso é que a pagina nunca recarrega, trazendo uma boa performace :).. e colocando em pratica o conceito de SPA.
+
+  Utilizando JSON para fornecer os dados para a gente podemos utilizar diversos FrontEnd
+
+  #Criando Front Web
+    -Primeiro iremos criar uma nova pasta com o seguinte comand > 'yarn create react-app web', qua o nome dela vai ser "web"
+
+    OBS: Todo o html é gerando pelo javascript.
+
+
+  !Regra que o React importante:
+    *Só podemos criar um componente por arquivo.
+
+  -Entendendo como que fazemos um botao disparar um evento
+    - Entao és a pergunta, onde criamos a função que irá disparar esse evento?
+      *Criamos ela dentro do proprio componente.
+    
+  - Utilizando a função de geolocalização do navegador para 
+    * para conseguir pegar a localização do usuario estaremo utilizando uma propiedade,
+    que esta disponivel e se chama 'navigator'.
+    
+    * useEffect : 
+      realizamos o import no react,
+      * Ele serve para dispararmos uma função toda vez que uma informação for alterada,
+      ou também apenas uma unica vez.
+
+
+ 
+
+    #CORS
+       Estamos instalando o cors para utilizamos em noss backend, o intuito e deixar o nosso backend
+       acessivel para o nosso frontend..
+       Pois o Node possui um comportamento default de evitar acessos externos a nossa API, ele 
+       so permite acessos atraves do mesmo endereço.
+       O exemplo mais claro disso é a nossa propria aplicação. O nosso Front roda na porta 3000 e 
+       o nosso back roda na porta 3333.
+
+      Comand > 'yarn add cors'
+          OBS React: Dentro do react utilizamos uma abordagem de programação imperativa,
+          em vez de programação descritiva.
+
+      
+
+
+      # DESENVOLVIMENTO MOBILE #
+
+        -Abordagem Tradicional
+          * Na abordagem tradicional, criamos uma aplicação para IOS 
+            e outra para Android, e nesses casos, o trabalho se torna repetido
+            tanto na criação quanto para alterações no projeto.
+          * No IOS gerava um .ipa e no Android que gera até hoje um .apx
+
+        -Abordagem React Native
+          * Todo o codigo é feito em JavaScript, esse codigo nao é 
+            convertido em código nativo, melhor que isso, o dispositivo 
+            passa a entender o código JavaScript e a interface é gerada 
+            totalmente nativa.
+          * Ao final do desenvolvimento com React Native conseguirmos
+            gerar o .ipa para IOS e o .apk para android;
+
+          * O responsavel por fazer com que nosso dispositivo mobile consiga
+            enteder JavaScript, se chama JavaScipt CORS, que é implementado pelo
+            ReactNative.
+          * O JavaScript CORS da o entendimento da linguagem JavaScript para nosso
+            sistema operacional, apartir disso tanto o IOS e o Android passar a entender
+            o javascript para a construção da interface e também manipulação da interface
+
+          * Para o desenvolvimento da nossa aplicação mobile estaremos utilizando
+          uma ferramenta chama 'Expo'.
+          * Podemos considerar que o Expo é um framework para o ReactNative,
+            não é um framework de estrutura de pasta e nem de opniao(como o typeScript),
+            ele é um conjunto de ferramentas e bibliotecas prontas para utilizarmos a grande
+            maioria das funcionalidades do nosso celular, por exemplo:
+                - Camera, mapas, sensor, geolocalização e etc.. 
+          
+          * Sem o Expo, precisamos instalar em nosso sistema tanto o Android Studio
+            para obter a SDK de desenvolvimento Android, e o Xcode(apenas no Mac) para
+            obter a SDK do iOS.
+
+          * Com o Expo, nós instalamaos um aplicativo no celular chamado Expo, e dentro
+            dele, tudo o que precisamos para desenvolver no React Native já esta instalado,
+            como as API's de mapas, geolocalização, camera, senssores, calendario, etc...
+            
+            Com isso, não precisamos nos preocupar em gerar o aplicativo para Android e IOS
+            já que o app do Expo instalado tem tudo o que precisamos e assim usamos apenas o React 
+          
+          * Para inciarmos o desenvolvimento com reactNative, precisaremos instalar-lo em nossa maquina,
+            com o seguinte, la dentro do ficheiro do nosso projeto:
+            Comand > yarn global add expo-cli.
+          
+          
+
+

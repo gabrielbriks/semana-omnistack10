@@ -1,0 +1,21 @@
+/* fazendo com que o main ocupe todo o espaço disponivel dele */
+main{
+  flex: 1;
+}
+
+main ul{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);/* mesma coisa que: '1fr 1fr' */
+
+  /* distanciar as colunas e linhas*/
+  gap: 20px;
+
+  /* tirar qualquer estilização existente na list*/
+  list-style: none;
+}
+
+@media (max-width: 650px){
+  main ul{
+    grid-template-columns: 1fr;
+  }
+}

@@ -208,6 +208,11 @@ Entendendo o React
             
             Com isso, não precisamos nos preocupar em gerar o aplicativo para Android e IOS
             já que o app do Expo instalado tem tudo o que precisamos e assim usamos apenas o React 
-
           
+          * Para inciarmos o desenvolvimento com reactNative, precisaremos instalar-lo em nossa maquina,
+            com o seguinte, la dentro do ficheiro do nosso projeto:
+            Comand > yarn global add expo-cli.
+          
+          
+
 

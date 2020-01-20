@@ -165,3 +165,49 @@ Entendendo o React
           em vez de programação descritiva.
 
       
+
+
+      # DESENVOLVIMENTO MOBILE #
+
+        -Abordagem Tradicional
+          * Na abordagem tradicional, criamos uma aplicação para IOS 
+            e outra para Android, e nesses casos, o trabalho se torna repetido
+            tanto na criação quanto para alterações no projeto.
+          * No IOS gerava um .ipa e no Android que gera até hoje um .apx
+
+        -Abordagem React Native
+          * Todo o codigo é feito em JavaScript, esse codigo nao é 
+            convertido em código nativo, melhor que isso, o dispositivo 
+            passa a entender o código JavaScript e a interface é gerada 
+            totalmente nativa.
+          * Ao final do desenvolvimento com React Native conseguirmos
+            gerar o .ipa para IOS e o .apk para android;
+
+          * O responsavel por fazer com que nosso dispositivo mobile consiga
+            enteder JavaScript, se chama JavaScipt CORS, que é implementado pelo
+            ReactNative.
+          * O JavaScript CORS da o entendimento da linguagem JavaScript para nosso
+            sistema operacional, apartir disso tanto o IOS e o Android passar a entender
+            o javascript para a construção da interface e também manipulação da interface
+
+          * Para o desenvolvimento da nossa aplicação mobile estaremos utilizando
+          uma ferramenta chama 'Expo'.
+          * Podemos considerar que o Expo é um framework para o ReactNative,
+            não é um framework de estrutura de pasta e nem de opniao(como o typeScript),
+            ele é um conjunto de ferramentas e bibliotecas prontas para utilizarmos a grande
+            maioria das funcionalidades do nosso celular, por exemplo:
+                - Camera, mapas, sensor, geolocalização e etc.. 
+          
+          * Sem o Expo, precisamos instalar em nosso sistema tanto o Android Studio
+            para obter a SDK de desenvolvimento Android, e o Xcode(apenas no Mac) para
+            obter a SDK do iOS.
+
+          * Com o Expo, nós instalamaos um aplicativo no celular chamado Expo, e dentro
+            dele, tudo o que precisamos para desenvolver no React Native já esta instalado,
+            como as API's de mapas, geolocalização, camera, senssores, calendario, etc...
+            
+            Com isso, não precisamos nos preocupar em gerar o aplicativo para Android e IOS
+            já que o app do Expo instalado tem tudo o que precisamos e assim usamos apenas o React 
+
+          
+

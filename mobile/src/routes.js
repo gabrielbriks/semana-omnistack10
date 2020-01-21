@@ -15,7 +15,7 @@ const Routes = createAppContainer(
             //qual componente que sera renderizado
             screen: Main,
             navigationOptions:{
-                title: 'Dev Radar'
+                title: 'Dev Radar',
             }
         },
         Profile:{
@@ -24,6 +24,20 @@ const Routes = createAppContainer(
                 title: 'Perfil no GitHub'
             }
         },
+    },{
+        defaultNavigationOptions:{
+            //Aqui ele aceita todos tipos de styles
+            headerTintColor:'#FFF',
+            headerTitleAlign:'center',
+            headerTitleStyle:{
+                fontSize:25,
+                fontWeight: 'bold'
+            },
+            headerStyle:{
+                backgroundColor: '#7b40e7',
+                
+            }
+        }
     })
 );
 

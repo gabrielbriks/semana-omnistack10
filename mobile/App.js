@@ -1,20 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+
+import Routes from './src/routes'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello Oministack!!!</Text>
-      <Text>Minuto 23:05</Text>
-    </View>
+    /* Aqui no React não possuí herança de estilização, nesse caso 
+      para utilizarmos uma estilização que esta na tag pai, deveremos
+      aplicar também na tag filho.
+    */
+   <Routes />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

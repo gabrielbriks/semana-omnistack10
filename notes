@@ -167,52 +167,91 @@ Entendendo o React
       
 
 
-      # DESENVOLVIMENTO MOBILE #
+# DESENVOLVIMENTO MOBILE #
 
-        -Abordagem Tradicional
-          * Na abordagem tradicional, criamos uma aplicação para IOS 
-            e outra para Android, e nesses casos, o trabalho se torna repetido
-            tanto na criação quanto para alterações no projeto.
-          * No IOS gerava um .ipa e no Android que gera até hoje um .apx
+  -Abordagem Tradicional
+    * Na abordagem tradicional, criamos uma aplicação para IOS 
+      e outra para Android, e nesses casos, o trabalho se torna repetido
+      tanto na criação quanto para alterações no projeto.
+    * No IOS gerava um .ipa e no Android que gera até hoje um .apx
 
-        -Abordagem React Native
-          * Todo o codigo é feito em JavaScript, esse codigo nao é 
-            convertido em código nativo, melhor que isso, o dispositivo 
-            passa a entender o código JavaScript e a interface é gerada 
-            totalmente nativa.
-          * Ao final do desenvolvimento com React Native conseguirmos
-            gerar o .ipa para IOS e o .apk para android;
+  -Abordagem React Native
+    * Todo o codigo é feito em JavaScript, esse codigo nao é 
+      convertido em código nativo, melhor que isso, o dispositivo 
+      passa a entender o código JavaScript e a interface é gerada 
+      totalmente nativa.
+    * Ao final do desenvolvimento com React Native conseguirmos
+      gerar o .ipa para IOS e o .apk para android;
 
-          * O responsavel por fazer com que nosso dispositivo mobile consiga
-            enteder JavaScript, se chama JavaScipt CORS, que é implementado pelo
-            ReactNative.
-          * O JavaScript CORS da o entendimento da linguagem JavaScript para nosso
-            sistema operacional, apartir disso tanto o IOS e o Android passar a entender
-            o javascript para a construção da interface e também manipulação da interface
+    * O responsavel por fazer com que nosso dispositivo mobile consiga
+      enteder JavaScript, se chama JavaScipt CORS, que é implementado pelo
+      ReactNative.
+    * O JavaScript CORS da o entendimento da linguagem JavaScript para nosso
+      sistema operacional, apartir disso tanto o IOS e o Android passar a entender
+      o javascript para a construção da interface e também manipulação da interface
 
-          * Para o desenvolvimento da nossa aplicação mobile estaremos utilizando
-          uma ferramenta chama 'Expo'.
-          * Podemos considerar que o Expo é um framework para o ReactNative,
-            não é um framework de estrutura de pasta e nem de opniao(como o typeScript),
-            ele é um conjunto de ferramentas e bibliotecas prontas para utilizarmos a grande
-            maioria das funcionalidades do nosso celular, por exemplo:
-                - Camera, mapas, sensor, geolocalização e etc.. 
+    * Para o desenvolvimento da nossa aplicação mobile estaremos utilizando
+    uma ferramenta chama 'Expo'.
+    * Podemos considerar que o Expo é um framework para o ReactNative,
+      não é um framework de estrutura de pasta e nem de opniao(como o typeScript),
+      ele é um conjunto de ferramentas e bibliotecas prontas para utilizarmos a grande
+      maioria das funcionalidades do nosso celular, por exemplo:
+          - Camera, mapas, sensor, geolocalização e etc.. 
+    
+    * Sem o Expo, precisamos instalar em nosso sistema tanto o Android Studio
+      para obter a SDK de desenvolvimento Android, e o Xcode(apenas no Mac) para
+      obter a SDK do iOS.
+
+    * Com o Expo, nós instalamaos um aplicativo no celular chamado Expo, e dentro
+      dele, tudo o que precisamos para desenvolver no React Native já esta instalado,
+      como as API's de mapas, geolocalização, camera, senssores, calendario, etc...
+      
+      Com isso, não precisamos nos preocupar em gerar o aplicativo para Android e IOS
+      já que o app do Expo instalado tem tudo o que precisamos e assim usamos apenas o React 
+    
+    * Para inciarmos o desenvolvimento com reactNative, precisaremos instalar-lo em nossa maquina,
+      com o seguinte, la dentro do ficheiro do nosso projeto:
+      Comand > yarn global add expo-cli.
+    
+    - Estrutura
+      * A utilização de CSS em componentes ReactNative possui uma 
+        abordagem diferente do ReactJS.
+        Uma delas é que nao utilizamos hífen durante a construção de
+        uma estilização, trocamos o hífen por uma letra maiuscula, por
+        exemplo: 
+                !errado: background-color: 'black' 
+                !certo: backgoundColor: 'black'
+      * Também dentro do ReactNative não utilizamos divs e sim 
+        tags especificas que equivale o conceito de Div.
+
+      * Utilizaremos uma navegação, para visualizar o Profile do 
+        dev pelo proprio GitHub. 
+        Para isso acessaremos a documentação do Expo para ver como 
+          utiliza essa navegação.
+          Acesse "https://docs.expo.io/versions/v36.0.0/guides/routing-and-navigation/"
+
+          Apos ler a documentação e enteder como funciona, siga os paços de
+          instalação. Comand > 'yarn add react-navigation'
+
+          Lá também nos diz que devemos instalar mais algumas dependecias,
+          Comand > 'expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context'
           
-          * Sem o Expo, precisamos instalar em nosso sistema tanto o Android Studio
-            para obter a SDK de desenvolvimento Android, e o Xcode(apenas no Mac) para
-            obter a SDK do iOS.
+          Obs:
+            * react-native-gesture-handler: para utilizar eventos de gestos
+            * react-native-reanimated: para lidar com animações
+            * react-native-screens: Modulo de dependencias para gerenciar as telas e as rotas
+            * react-native-safe-area-context: para lidar com o preenchimen to da tela.
 
-          * Com o Expo, nós instalamaos um aplicativo no celular chamado Expo, e dentro
-            dele, tudo o que precisamos para desenvolver no React Native já esta instalado,
-            como as API's de mapas, geolocalização, camera, senssores, calendario, etc...
+          Para realizar o nosso "hello" com o navigation, seguimos lendo a documentação e podemos 
+          observar que na documentação fala de que possuí vários tipos de navegação e lá cita um, 
+          como mais famoso que é a navegação por pilha 'react-navigation-stack'.. Sendo assim,
+          iremos instalar ela em nosso projeto. 
+            Comand > 'yarn add  react-navigation-stack' &
+                     'yarn add react-native-community/masked-view' 
+
             
-            Com isso, não precisamos nos preocupar em gerar o aplicativo para Android e IOS
-            já que o app do Expo instalado tem tudo o que precisamos e assim usamos apenas o React 
-          
-          * Para inciarmos o desenvolvimento com reactNative, precisaremos instalar-lo em nossa maquina,
-            com o seguinte, la dentro do ficheiro do nosso projeto:
-            Comand > yarn global add expo-cli.
-          
+
+            Essa navagação por pilha, e a navegção por botão, por exemplo: Clica no btn e vai para uma page e etc.
           
 
 

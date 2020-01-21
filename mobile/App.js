@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { StatusBar } from 'react-native';
 import Routes from './src/routes'
 
 export default function App() {
@@ -8,7 +8,10 @@ export default function App() {
       para utilizarmos uma estilização que esta na tag pai, deveremos
       aplicar também na tag filho.
     */
+   <>
+   <StatusBar barStyle="ligth-content" backgroundColor="#7b40e7"/>
    <Routes />
+   </>
   );
 }
 

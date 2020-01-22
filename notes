@@ -259,3 +259,7 @@ Entendendo o React
 
           * Realizaremos a instalação da seguinte lib, com o comando abaixo:
             Comand > 'expo install react-native-maps'
+          * Para conseguirmos utilizar a function que determinara o ponto inicial no mapa, 
+            precisamos pegar a localização do usuario, e para isso, iremos na documentação do Expo
+            que esta no Link : https://docs.expo.io/versions/v36.0.0/sdk/location/ ; 
+            E instalar mais uma dependecia: Comand > 'expo install expo-location'

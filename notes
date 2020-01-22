@@ -253,5 +253,9 @@ Entendendo o React
 
             Essa navagação por pilha, e a navegção por botão, por exemplo: Clica no btn e vai para uma page e etc.
           
+        - Mapas
+          * Para conseguirmo usar o mapa em nossa aplicação, iremos seguir o que diz na documentação
+            do Expo, que pode ser acessado no seguinte link: https://docs.expo.io/versions/v36.0.0/sdk/map-view/
 
-
+          * Realizaremos a instalação da seguinte lib, com o comando abaixo:
+            Comand > 'expo install react-native-maps'

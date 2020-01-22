@@ -5,9 +5,9 @@ import React, {useState, useEffect} from 'react';
 Para utilizarmos ou melhor dizendo construirmos css para os componets
   utilizamos a importação StyleSheet
 Para utilizarmos imagens em nosso projeto, importamos a lib Image
-
+TouchableOpacity: E um botão em que poder realizar uma personalizada
 */
-import { StyleSheet, Image, View, Text } from 'react-native';
+import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
 
 /*importando lib Mapas,Marker
     Marker: é a marcação dentro do mapa;
@@ -21,6 +21,10 @@ import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location'
     getCurrentPositionAsync: Esse cara que vai pegar a localização do usuario;
 
 */
+
+//Importando Icons; Pode-se pesquisar sobre esse lib no google
+import { MaterialIcons } from '@expo/vector-icons';
+
 
 //Criando componente
 //A propiedade navigation, vem de forma automatica para todas as paginas da nossa aplicação
@@ -65,6 +69,7 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
         return null;
     }
     return(
+        <>
          <MapView initialRegion={currentRegion} style={styles.map}>
              <Marker coordinate={{ latitude: -15.7915298,longitude:-47.8921573 }}>
 
@@ -81,6 +86,20 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
                 </Callout>
              </Marker>
          </MapView>
+         <View style={styles.searchForm}>
+            <TextInput 
+                style={styles.searchInput} 
+                placeholder ="Buscar devs por techs..."
+                placeholderTextColor="#999"
+                autoCapitalize="words" // colocar a primeira letra de cada palavra em caixa alta
+                autoCorrect = {false} // para nao corrigir o texto digitado de uma forma padrao
+            />
+
+            <TouchableOpacity onPress={() => {}} styles={styles.loadButton}>
+                <MaterialIcons name="my-location" size={20} color="#fff"/>
+            </TouchableOpacity>
+         </View>
+        </>
     );
     
 }
@@ -111,7 +130,24 @@ const styles = StyleSheet.create({
     },
     devTechs:{
         marginTop: 5,
-    }
-});
+    },
+    searchForm:{
+        position:'absolute',
+        bottom: 20,
+        left: 20,
+        right: 20,
+        zIndex: 5, // Para forçar que ele fique por cima do mapa
+        flexDirection: 'row',
 
+    },
+    searchInput:{
+        flex: 1,
+        height: 50,
+        backgroundColor: '#fff',
+        borderRadius: 25,
+        paddingHorizontal: 20,
+
+    },
+});
+//Time Aula 1:10
 export default Main;

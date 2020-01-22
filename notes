@@ -280,3 +280,8 @@ Entendendo o React
               Comand > 'expo install react-native-webview'
             
             Logo após importaremos la dento da nossa page 'Profile';
+
+        * Adicionando input para buscar devs no mapa
+          Para isso sempre que quisermos colocar um input em cima do mapa,
+          a melhor forma e colocando logo depos do nosso MapView.
+          

@@ -27,8 +27,9 @@ const Routes = createAppContainer(
     },{
         defaultNavigationOptions:{
             //Aqui ele aceita todos tipos de styles
-            headerTintColor:'#FFF',
+            headerTintColor:'#FFF',            
             headerTitleAlign:'center',
+            headerBackTitleVisible: false,//Propiedade para retirar o btn voltar do header, não aplicavel para o android(eu acho); 
             headerTitleStyle:{
                 fontSize:25,
                 fontWeight: 'bold'

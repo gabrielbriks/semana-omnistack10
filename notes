@@ -248,7 +248,7 @@ Entendendo o React
           iremos instalar ela em nosso projeto. 
             Comand > 'yarn add  react-navigation-stack' &
                      'yarn add react-native-community/masked-view' 
-
+        
             
 
             Essa navagação por pilha, e a navegção por botão, por exemplo: Clica no btn e vai para uma page e etc.
@@ -263,3 +263,20 @@ Entendendo o React
             precisamos pegar a localização do usuario, e para isso, iremos na documentação do Expo
             que esta no Link : https://docs.expo.io/versions/v36.0.0/sdk/location/ ; 
             E instalar mais uma dependecia: Comand > 'expo install expo-location'
+          
+          * Para implementarmos a marcação no mapa, iremos importar uma lib no 'react-native-maps'
+            que se chama 'Marker'..
+
+            E agora para adicionarmos a foto nessa marcação iremos importar uma outra lib no 'react-native'
+            chamada 'Image"
+      OBS: Dentro do React Native para utilizarmos eventos de click, utilizamos uma propiedade chamada 
+        de 'onPress', apesar de estarmos acostumado com o 'onClick' no JavaScipt convencional.
+
+          * Ao levarmos o Dev para a rota 'Perfil GitHub' devemos apresentar o perfil real
+           do dev no proprio Git, para implementarmos isso iremos buscar na documentação do Expo
+           sobre 'WebView', Link: https://docs.expo.io/versions/v36.0.0/sdk/webview/
+
+           Utilizaremos o seguinte comando para utilizar o WebView :
+              Comand > 'expo install react-native-webview'
+            
+            Logo após importaremos la dento da nossa page 'Profile';

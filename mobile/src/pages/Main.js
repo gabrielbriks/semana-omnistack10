@@ -25,10 +25,14 @@ import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location'
 //Importando Icons; Pode-se pesquisar sobre esse lib no google
 import { MaterialIcons } from '@expo/vector-icons';
 
+import api from '../services/api';//importando nossa api
 
 //Criando componente
 //A propiedade navigation, vem de forma automatica para todas as paginas da nossa aplicação
 function Main({ navigation }){ // desestruturando para conseguir pegar uma propiedade unica
+    //criando estado que irá armazenar os devs
+    const [devs, setDevs] = useState([]);
+
     const [currentRegion, setCurrentRegion] = useState(null);
 
     useEffect(() => {
@@ -65,12 +69,37 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
         loadInitialPosition();
     },[]);      
 
+    async function loadDevs(){
+        const { latitude, longitude } = currentRegion;
+
+        const response = await api.get('/search', {
+            params:{
+                latitude,
+                longitude,
+                techs: 'ReactJS'
+            }
+        });
+        setDevs(response.data);
+    }
+
+    /*Função que irá atualizar a localização State, quando o usuario mexer no mapa,
+        Recebe uma region automaticamente atravez da propiedade 'onRegionChangeComplete'
+    */
+    function handleRegionChanged(region){
+        // console.log(region)
+        setCurrentRegion(region);
+    }
+
     if(!currentRegion){
         return null;
     }
     return(
         <>
-         <MapView initialRegion={currentRegion} style={styles.map}>
+            <MapView 
+                onRegionChangeComplete={handleRegionChanged}
+                initialRegion={currentRegion}
+                style={styles.map}
+            >
              <Marker coordinate={{ latitude: -15.7915298,longitude:-47.8921573 }}>
 
                 <Image style={styles.avatar} source={{ uri: 'https://avatars3.githubusercontent.com/u/37519878?s=460&v=4'}}/> 
@@ -95,7 +124,7 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
                 autoCorrect = {false} // para nao corrigir o texto digitado de uma forma padrao
             />
 
-            <TouchableOpacity onPress={() => {}} style={styles.loadButton}>
+            <TouchableOpacity  onPress={loadDevs} style={styles.loadButton}>
                 <MaterialIcons name="my-location" size={20} color="#fff"/>
             </TouchableOpacity>
          </View>

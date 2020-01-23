@@ -7,7 +7,7 @@ Para utilizarmos ou melhor dizendo construirmos css para os componets
 Para utilizarmos imagens em nosso projeto, importamos a lib Image
 TouchableOpacity: E um botão em que poder realizar uma personalizada
 */
-import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 
 /*importando lib Mapas,Marker
     Marker: é a marcação dentro do mapa;
@@ -95,7 +95,7 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
                 autoCorrect = {false} // para nao corrigir o texto digitado de uma forma padrao
             />
 
-            <TouchableOpacity onPress={() => {}} styles={styles.loadButton}>
+            <TouchableOpacity onPress={() => {}} style={styles.loadButton}>
                 <MaterialIcons name="my-location" size={20} color="#fff"/>
             </TouchableOpacity>
          </View>
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     },
     searchForm:{
         position:'absolute',
-        bottom: 20,
+        top: 20,//trocando prop 'button' para 'top', ate configurar o teclado 
         left: 20,
         right: 20,
         zIndex: 5, // Para forçar que ele fique por cima do mapa
@@ -146,8 +146,35 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 25,
         paddingHorizontal: 20,
+        fontSize: 16,
+        // Aplicando Sobra iOS
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowOffset:{
+            width: 4,
+            height: 4,
+        },
+        // End - Aplicando Sobra iOS
+        elevation: 2,
+    },
+    loadButton:{
+        width: 50,
+        height: 50,
+        backgroundColor: '#8e4dff',
+        borderRadius: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 15,        
 
     },
 });
-//Time Aula 1:10
+
 export default Main;
+
+/* Melhorias posteriores
+
+Keyboard: Podemos importar essa lib, para conseguir configura
+    o teclado e o input para que ao acionar o teclado, não
+    fique em cima do nosso input
+
+*/

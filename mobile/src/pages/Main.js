@@ -35,6 +35,8 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
 
     const [currentRegion, setCurrentRegion] = useState(null);
 
+    const [tecs, setTechs] = useState('');
+
     useEffect(() => {
         //Ira carergar a posição inicial no mapa
         async function loadInitialPosition(){
@@ -76,7 +78,7 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
             params:{
                 latitude,
                 longitude,
-                techs: 'ReactJS'
+                techs
             }
         });
         console.log(response.data.devs);
@@ -135,6 +137,8 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
                 placeholderTextColor="#999"
                 autoCapitalize="words" // colocar a primeira letra de cada palavra em caixa alta
                 autoCorrect = {false} // para nao corrigir o texto digitado de uma forma padrao
+                value={techs}
+                onChangeText = {setTechs} //usando o metodo set do State para conseguir usar o values do input
             />
 
             <TouchableOpacity  onPress={loadDevs} style={styles.loadButton}>

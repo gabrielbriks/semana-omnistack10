@@ -30,7 +30,7 @@ import api from '../services/api';//importando nossa api
 //Criando componente
 //A propiedade navigation, vem de forma automatica para todas as paginas da nossa aplicação
 function Main({ navigation }){ // desestruturando para conseguir pegar uma propiedade unica
-    //criando estado que irá armazenar os devs
+    //criando estado que irá armazenar os devs da busca do app
     const [devs, setDevs] = useState([]);
 
     const [currentRegion, setCurrentRegion] = useState(null);
@@ -79,7 +79,8 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
                 techs: 'ReactJS'
             }
         });
-        setDevs(response.data);
+        console.log(response.data.devs);
+        setDevs(response.data.devs);
     }
 
     /*Função que irá atualizar a localização State, quando o usuario mexer no mapa,

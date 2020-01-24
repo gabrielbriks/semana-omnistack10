@@ -35,7 +35,7 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
 
     const [currentRegion, setCurrentRegion] = useState(null);
 
-    const [tecs, setTechs] = useState('');
+    const [techs, setTechs] = useState('');
 
     useEffect(() => {
         //Ira carergar a posição inicial no mapa
@@ -78,7 +78,7 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
             params:{
                 latitude,
                 longitude,
-                techs
+                techs,
             }
         });
         console.log(response.data.devs);

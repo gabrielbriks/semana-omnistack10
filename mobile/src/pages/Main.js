@@ -86,7 +86,7 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
         Recebe uma region automaticamente atravez da propiedade 'onRegionChangeComplete'
     */
     function handleRegionChanged(region){
-        // console.log(region)
+        //  console.log(region)
         setCurrentRegion(region);
     }
 
@@ -100,20 +100,32 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
                 initialRegion={currentRegion}
                 style={styles.map}
             >
-             <Marker coordinate={{ latitude: -15.7915298,longitude:-47.8921573 }}>
+          {devs.map(dev =>(
+                <Marker 
+                    key={dev._id}
+                    coordinate=
+                    {{
+                        longitude: dev.location.coordinates[0],
+                        latitude: dev.location.coordinates[1] //pegando latitude, que esta na segunda posicao
+                    }}
+                >
 
-                <Image style={styles.avatar} source={{ uri: 'https://avatars3.githubusercontent.com/u/37519878?s=460&v=4'}}/> 
+                <Image 
+                    style={styles.avatar}
+                    source={{ uri: dev.avatar_url}}
+                /> 
                 <Callout onPress={() => {
-                    //navegação
-                    navigation.navigate('Profile', { github_username: 'gabrielbriks' });
+                    //navegação para a page perfil
+                    navigation.navigate('Profile', { github_username: dev.github_username });
                 }} > 
                     <View style={styles.callout}>
-                        <Text style={styles.devName}>Gabriel Reis Morais</Text>
-                        <Text style={styles.devBio}>Alwais learning!</Text>
-                        <Text style={styles.devTechs}>.NET, C#, JavaScript, ReactJS</Text>
+                        <Text style={styles.devName}>{dev.name}</Text>
+                        <Text style={styles.devBio}>{dev.bio}</Text>
+                        <Text style={styles.devTechs}>{dev.techs.join(', ')}</Text>
                     </View>
                 </Callout>
              </Marker>
+          ))}
          </MapView>
          <View style={styles.searchForm}>
             <TextInput 

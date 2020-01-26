@@ -35,4 +35,4 @@ app.use(routes);
  *   Apartir desse momento que declaramos o 'listen' conseguimo acessar nossa
  *   aplicação utilizando essa porta especificada no parametro.
 */
- server.listen(3333);
+ server.listen(process.env.PORT || 3333);

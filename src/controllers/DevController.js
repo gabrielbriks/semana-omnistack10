@@ -1,6 +1,7 @@
 const axios = require('axios');
 const Dev = require('../models/Dev');
 const parseStringAsArray = require('../utils/parseStringAsArray');
+const { findConections, sendMessage} = require('../websocket');
 //Um controller possui 5 funções index, show, store, update, detroy
 /**
  * Index: para quando queremos mostrar uma lista de dev por exemplo; 
@@ -50,7 +51,18 @@ module.exports = {
             techs: techsArray,
             location,
           });
+
+          /* Vamos filtrar as coexoes que estao no maximo 10km de distancia
+            e que o novo dev tenha pelo menos uma das techs filtradas 
+          */
+          const sendSocketMenssageTo = findConections(
+            { latitude, longitude },
+            techsArray,
+          );
           
+          sendMessage(sendSocketMenssageTo, 'new-dev', dev);
+
+          // console.log(sendSocketMenssageTo);
           return response.json(dev);
         }
       }

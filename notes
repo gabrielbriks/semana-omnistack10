@@ -292,4 +292,7 @@ Entendendo o React
          do front-end ter solicitado. O Proprio backend consegue enviar uma resposta
          automaticamente utilizando essa abordagem.
             * Iniciaremos com a instala dessa lib no back-end; Comand > 'yarn add socket.io'
-        
+            * Após realizar as configurações e etc, partiremos para o app mobile.
+
+            * No app itemos utilizar o Websocket mas a versão client.
+              Comand > 'yarn add socket.io-client'

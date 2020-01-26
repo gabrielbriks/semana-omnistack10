@@ -26,6 +26,7 @@ import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location'
 import { MaterialIcons } from '@expo/vector-icons';
 
 import api from '../services/api';//importando nossa api
+import { connect, discconnect, subscribeToNewDev } from '../services/socket';//importando serviço de socket para utilizar o real time
 
 //Criando componente
 //A propiedade navigation, vem de forma automatica para todas as paginas da nossa aplicação
@@ -35,7 +36,7 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
 
     const [currentRegion, setCurrentRegion] = useState(null);
 
-    const [tecs, setTechs] = useState('');
+    const [techs, setTechs] = useState('');
 
     useEffect(() => {
         //Ira carergar a posição inicial no mapa
@@ -70,6 +71,25 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
         }
         loadInitialPosition();
     },[]);      
+    
+    //Vou ficar monitorando a variavel devs, para executar o evento Real Time
+    useEffect(()=>{
+        subscribeToNewDev(dev => setDevs([...devs, dev]));
+    }, [devs]);
+
+    function setupWebSocket(){
+        discconnect();
+
+        const {latitude, longitude } = currentRegion;
+                
+        connect(
+            latitude,
+            longitude,
+            techs,
+        );
+
+        
+    }
 
     async function loadDevs(){
         const { latitude, longitude } = currentRegion;
@@ -81,8 +101,9 @@ function Main({ navigation }){ // desestruturando para conseguir pegar uma propi
                 techs
             }
         });
-        console.log(response.data.devs);
+        //console.log(response.data.devs); 
         setDevs(response.data.devs);
+        setupWebSocket()
     }
 
     /*Função que irá atualizar a localização State, quando o usuario mexer no mapa,

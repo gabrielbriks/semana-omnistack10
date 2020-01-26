@@ -50,6 +50,6 @@ exports.findConections = (coordinates, techs) => {
 exports.sendMessage = (to, message, data) => {
   //Percorrendo o array de destinatarios
   to.forEach(connection => {
-    io.to(connection.id.emit(message, data)) // emitindo uma mensagem o dono do id in connection
+    io.to(connection.id).emit(message, data) // emitindo uma mensagem o dono do id in connection
   })
 }

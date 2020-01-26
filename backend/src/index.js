@@ -1,9 +1,17 @@
 const express  = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const http = require('http'); //importando essa lib para criarmos um servidor para o webSocket
+
 const routes = require('./routes');
+const { setupWebSocket } = require('./websocket');//importando funcao do webSocket
 
 const app = express();
+/* Apartir desse momento tenho um servidor fora do express */
+const server = http.Server(app);
+
+//instanciando função do websocket.js
+setupWebSocket(server); 
 
 mongoose.connect('mongodb+srv://master:@master@cluster0-itqet.mongodb.net/week10?retryWrites=true&w=majority',{
   useNewUrlParser: true,
@@ -27,4 +35,4 @@ app.use(routes);
  *   Apartir desse momento que declaramos o 'listen' conseguimo acessar nossa
  *   aplicação utilizando essa porta especificada no parametro.
 */
- app.listen(3333);
+ server.listen(3333);

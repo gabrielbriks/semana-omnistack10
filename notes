@@ -284,4 +284,12 @@ Entendendo o React
         * Adicionando input para buscar devs no mapa
           Para isso sempre que quisermos colocar um input em cima do mapa,
           a melhor forma e colocando logo depos do nosso MapView.
-          
+#Ultimo video
+      - Utilizando Websocket  
+        * Para deixar a aplicação real time, utilizaremos nessa parte algo chamado
+         "requisições WebSocket".
+         * Basicamente as requisições WebSockets são, requisições sem a necessidade 
+         do front-end ter solicitado. O Proprio backend consegue enviar uma resposta
+         automaticamente utilizando essa abordagem.
+            * Iniciaremos com a instala dessa lib no back-end; Comand > 'yarn add socket.io'
+        

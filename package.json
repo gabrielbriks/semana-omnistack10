@@ -1,9 +1,0 @@
-{
-  "name": "semana-oministack10",
-  "version": "1.0.0",
-  "description": "Contrução de uma aplicação como um Google Maps de Devs que darei o nome de DMaps",
-  "main": "index.js",
-  "repository": "https://github.com/gabrielbriks/semana-oministack10.git",
-  "author": "gabrielbriks <greis9010@gmail.com>",
-  "license": "MIT"
-}

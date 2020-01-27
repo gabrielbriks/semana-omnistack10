@@ -1,0 +1,44 @@
+
+#app{
+  /* deifnidno essa largura, pq se atela do usuario for
+   muito grande quero que fique tudo centralizado
+  */
+  max-width: 1200px;
+  margin: 0 auto;
+
+  /* definindo padding de 60 em cima e em baixo e 30 na direita e esquerda */
+  padding: 60px 30px;
+
+  /* deninindo essa duas propiedades para que tudo que estiver dentro do app 
+    fique um do lado do outro, por isso o row;
+  */
+  display: flex;
+  flex-direction: row;
+
+  /* pq eu quero que o aside e o main estejam sempre alinhados ao topo*/
+  align-items: flex-start;
+}
+
+#app main {
+  margin-left: 30px;
+}
+/* quando a largura chegar a 1000px ele troca felx-direction existente 'row' para 'coluns'
+  e trata o resto do conteudo do #app para se comportar de forma bonita e responsivel
+*/
+@media (max-width: 1000px){
+  #app{
+    flex-direction: column;
+  }
+
+  #app main{
+    /* retirando margin left existente */
+    margin-left: 0;
+    margin-top: 30px;
+  }
+
+  #app aside{
+    width: 100%;
+  }
+
+  
+}

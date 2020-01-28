@@ -25,10 +25,18 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.gabrielbriks.devradar"
+      "bundleIdentifier": "com.gabrielbriks.devradar",
+      "config": {
+        "googleMapsApiKey": "<key>api maps key</key>"
+      }
     },
     "android":{
-      "package": "com.gabrielbriks.devradar"
+      "package": "com.gabrielbriks.devradar",
+      "config":{
+        "googleMaps": {
+          "apiKey": "<key>api maps key</key>"
+        }
+      }
     }
   }
 }

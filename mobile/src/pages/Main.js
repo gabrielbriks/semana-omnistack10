@@ -15,7 +15,7 @@ import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity, Keyboard } 
 */
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
-/* ??requestPermissionsAsync & ??^getCurrentPositionAsync
+/* ??requestPermissionsAsync & ??getCurrentPositionAsync
     requestPermissionsAsync: basicamente isso vai pedir para o nosso usuario as permissoes 
     necessarias para conseguirmo utilizar  localização do mesmo;
     getCurrentPositionAsync: Esse cara que vai pegar a localização do usuario;
@@ -243,5 +243,4 @@ export default Main;
 Keyboard: Podemos importar essa lib, para conseguir configura
     o teclado e o input para que ao acionar o teclado, não
     fique em cima do nosso input
-
 */

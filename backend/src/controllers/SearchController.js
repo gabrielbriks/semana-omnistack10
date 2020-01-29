@@ -5,24 +5,17 @@ const parseStringAsArray = require('../utils/parseStringAsArray');
 module.exports = {
 
     async index(request, response){
-        //busca todos os devs num raio de 10km 
-        //Filtrar po tecnologias 
-
+        //Buscar todos os devs num raio de 10km; 
+        //Filtrar por tecnologias;
         const { latitude, longitude, techs } = request.query;
         
         const techsArray = parseStringAsArray(techs);
         
         const devs = await Dev.find({
-            techs: {
-                /*$in >> e um operations do mongodb, pode se pesquisar quais sao os outros;
-                Se o usuario possui as technologias dentro de ...
-                */
+            techs: {              
                 $in: techsArray,
             },
-            location:{
-                /* $near >> Consigo encontrar objetos perto de uma localização;
-
-                */
+            location:{               
                $near: {
                    $geometry: {
                        type:'Point',
@@ -34,7 +27,6 @@ module.exports = {
         });
 
         // console.log(request.query);
-
         return response.json({ devs });
     }
 };

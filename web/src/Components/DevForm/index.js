@@ -16,8 +16,6 @@ function DevForm({onSubmit}){
         //  console.log(position.coords);
         const { latitude, longitude} = position.coords;
         
-        // console.log(latitude);
-
         setLatitude(latitude);
         setLongitude(longitude);
       },

@@ -5,7 +5,7 @@ const socket = socketio('http://192.168.1.4:3333',{
 });
 
 function subscribeToNewDev(subscribeFunction){
-   //vai ouvir ouvir ouvir o evento 'new-dev', evento dispara ao cadastrar um novo dev lá no back
+   //vai ouvir ouvir o evento 'new-dev', evento dispara ao cadastrar um novo dev lá no back-end (DevController)
    socket.on('new-dev', subscribeFunction);
 }
 

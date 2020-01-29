@@ -43,6 +43,7 @@ import DevItem from './Components/DevItem';
     * Um exemplo de propiedade é atribuir por exemplao nosso Header a propiedade ' title="Dashboard" ' 
     RESUMO:
       Propiedade nada mais é do que Informações um componente PAI passa para um componente FILHO
+
   3#Estado
     * é basicamenteuma informação que um componente vai manipular
     * O React nao fica monitorando as alterações de variaveis, por isso ao implentar o contador
@@ -92,7 +93,7 @@ function App() {//Componente PAI
 
      <main>
       <ul>
-        {/* Percorrendo o meu vetor devs, e ira retornor um conteudo JSX(HTML) */}
+        {/* Percorrendo o meu vetor devs, e irá retornar um conteudo JSX(HTML) */}
         {devs.map(dev => (
             <DevItem key={dev._id} dev={dev} />
           )
